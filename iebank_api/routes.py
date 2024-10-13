@@ -40,6 +40,8 @@ def get_accounts():
 @app.route('/accounts/<int:id>', methods=['GET'])
 def get_account(id):
     account = Account.query.get(id)
+    if account is None:
+        return {'error': 'Account not found'}, 404  # Return 404 if account does not exist
     return format_account(account)
 
 @app.route('/accounts/<int:id>', methods=['PUT'])
