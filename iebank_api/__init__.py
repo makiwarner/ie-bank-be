@@ -8,11 +8,6 @@ load_dotenv()
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///local.db'
-
-db = SQLAlchemy(app)
-
-
 # Select environment based on the ENV environment variable
 if os.getenv('ENV') == 'local':
     print("Running in local mode")
@@ -27,6 +22,8 @@ else:
     print("Running in production mode")
     app.config.from_object('config.ProductionConfig')
 
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///local.db'
 db = SQLAlchemy(app)
 
 from iebank_api.models import Account
