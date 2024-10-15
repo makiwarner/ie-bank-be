@@ -4,9 +4,14 @@ from flask_cors import CORS
 from dotenv import load_dotenv
 import os
 
+load_dotenv()
+
 app = Flask(__name__)
 
-load_dotenv()
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///local.db'
+
+db = SQLAlchemy(app)
+
 
 # Select environment based on the ENV environment variable
 if os.getenv('ENV') == 'local':
