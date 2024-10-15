@@ -16,7 +16,6 @@ env:
 
 jobs:
   build:
-    
     runs-on: ubuntu-latest
     env:
       ENV: ghci
@@ -47,8 +46,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: python-app
-        path: |
-          . 
+        path: .
 
   deploy-dev:
     runs-on: ubuntu-latest
